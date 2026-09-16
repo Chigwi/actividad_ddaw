@@ -101,6 +101,17 @@ public class ProductoDAO {
 	}
 	
 	public String delete(String id) {
+		String sql = "DELETE FROM \"producto\" WHERE \"id_producto\" = ?";
+		try(PreparedStatement pstmt = connection.prepareStatement(sql)) {
+			pstmt.setString(1, id);
+			
+			pstmt.executeUpdate();
+			
+			return "Eliminacion exitosa";
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
 		
 	}
 	
