@@ -60,7 +60,7 @@ private Connection connection;
 		String sql = "SELECT * FROM \"Titular\" WHERE \"identificacion\" = ?";
 		
 		try(PreparedStatement pstmt = connection.prepareStatement(sql)) {
-			
+			S
 			pstmt.setString(1, id);
 			
 			 ResultSet rs = pstmt.executeQuery();

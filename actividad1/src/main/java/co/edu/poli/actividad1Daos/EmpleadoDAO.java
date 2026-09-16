@@ -27,18 +27,57 @@ public class EmpleadoDAO {
 			
 			pstmt.setLong(1, e.getIdEmpleado());
 			
+			pstmt.setString(2, e.getNombre());
 			
+			pstmt.setString(3, e.getApellido());
 			
+			pstmt.setString(4, e.getCorreo());
 			
-		}catch(SQLException e) {
+			pstmt.setLong(5, e.getRol());
 			
-			e.printStackTrace();
+			pstmt.executeUpdate();
+			
+			return "Inserción exitosa!";
+			
+		}catch(SQLException ex) {
+			
+			ex.printStackTrace();
+			
+			return null;
 			
 		}
 		
 	}
 	
 	public Empleado select (Long id) {
+		
+		String sql = "SELECT * FROM \"empleado\" WHERE \"id_empleado\" = ?";
+		
+		try (PreparedStatement pstmt = connection.prepareStatement(sql)){
+			
+			pstmt.setLong(1, id);
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				Empleado em = mapRStoEmpleado(rs);
+				
+				return em;
+			}else {
+				
+				System.out.println("Empleado no encontrado");
+				
+				return null;
+				
+			}
+			
+		}catch(SQLException e) {
+			
+			e.printStackTrace();
+			
+			return null;
+		}
 		
 	}
 	
