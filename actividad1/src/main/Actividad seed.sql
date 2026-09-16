@@ -16,6 +16,7 @@ CREATE TABLE detalle_producto(
 
 CREATE TABLE producto(
     id_producto int PRIMARY KEY,
+    nombre varchar(1000),
     descripcion varchar(1000),
     disponible boolean,
     precio float,
