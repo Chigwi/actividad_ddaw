@@ -23,7 +23,7 @@ public class DetalleProductoDAO {
 	}
 	
 	public String insert (DetalleProducto t) {
-		String sql = "INSERT INTO\"detalle_producto\"(\"id_detalle_producto\",\"notas\",\"detalle_pedido\",\"producto_id\")VALUES(?,?,?)";
+		String sql = "INSERT INTO\"detalle_producto\"(\"id_detalle_producto\",\"notas\",\"detalle_pedido\",\"producto_id\")VALUES(?,?,?,?)";
 		
 		try (PreparedStatement pstmt = connection.prepareStatement(sql)){
 			
@@ -44,7 +44,7 @@ public class DetalleProductoDAO {
 	
 	public DetalleProducto select (Long id) {
 		
-		String sql = "SELECT * FROM \"detalle_producto\" WHERE \"id_detalle_pedido\" = ?";
+		String sql = "SELECT * FROM \"detalle_producto\" WHERE \"id_detalle_producto\" = ?";
 		try(PreparedStatement pstmt = connection.prepareStatement(sql)){
 			
 			pstmt.setLong(1, id);
@@ -88,7 +88,7 @@ public class DetalleProductoDAO {
 	}
 	
 	public String Update (DetalleProducto e) {
-		String sql = "UPDATE \"detalle_producto\" SET \"notas\" = ?, \"detalle_pedido\" = ?,\"producto_id\" = ? WHERE \"id_detalle_pedido\" = ?";
+		String sql = "UPDATE \"detalle_producto\" SET \"notas\" = ?, \"detalle_pedido\" = ?,\"producto_id\" = ? WHERE \"id_detalle_producto\" = ?";
 		try (PreparedStatement pstmt = connection.prepareStatement(sql)){
 			pstmt.setString(1, e.getNotas());
 			pstmt.setLong(2, e.getDetallePedido());

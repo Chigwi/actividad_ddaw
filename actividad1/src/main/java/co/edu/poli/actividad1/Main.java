@@ -2,7 +2,9 @@ package co.edu.poli.actividad1;
 
 import java.util.List;
 
+import co.edu.poli.actividad1.model.DetalleProducto;
 import co.edu.poli.actividad1.model.Empleado;
+import co.edu.poli.actividad1Daos.DetalleProductoDAO;
 import co.edu.poli.actividad1Daos.EmpleadoDAO;
 
 /**
@@ -11,6 +13,8 @@ import co.edu.poli.actividad1Daos.EmpleadoDAO;
  */
 public class Main {
     public static void main(String [] param) {
+    	
+    	//pruebas empleado
         
     	EmpleadoDAO empleadoDAO = new EmpleadoDAO();
     	
@@ -40,6 +44,32 @@ public class Main {
         empleadoDAO.Delete((long)2);
         empleadoDAO.Delete((long)3);
         
+        //pruebas detalle productos
+        
+        DetalleProductoDAO detalleProductoDAO = new DetalleProductoDAO();
+    	
+    	detalleProductoDAO.setConnection(DatabaseConnection.getInstance().getconConnection());
+    	
+        DetalleProducto dp1 = new DetalleProducto((long)1, "sin sal", (long)1, (long)1);
+        DetalleProducto dp2 = new DetalleProducto((long)2, "sin picante", (long)1, (long)2);
+        DetalleProducto dp3 = new DetalleProducto((long)3, "termino medio", (long)1, (long)3);
+        DetalleProducto dp4 = new DetalleProducto((long)1, "sin sal y con papas a la francesa", (long)1, (long)1);
+        
+        detalleProductoDAO.insert(dp1);
+        detalleProductoDAO.insert(dp2);
+        detalleProductoDAO.insert(dp3);
+        
+        List <DetalleProducto> detallesProductos = detalleProductoDAO.selctAll();
+        
+        System.out.println(detallesProductos.toString());
+        
+        detalleProductoDAO.Update(dp4);
+        
+        System.out.println(detalleProductoDAO.select((long)1).toString());
+        
+        detalleProductoDAO.Delete((long)1);
+        detalleProductoDAO.Delete((long)2);
+        detalleProductoDAO.Delete((long)3);
         
         
         
