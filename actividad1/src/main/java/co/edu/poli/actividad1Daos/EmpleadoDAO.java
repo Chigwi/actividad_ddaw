@@ -110,6 +110,33 @@ public class EmpleadoDAO {
 	
 	public String Update (Empleado e) {
 		
+		String sql = "UPDATE \"empleado\" SET \"nombre\" = ?, \"apellido\" = ?, \"correo\" = ?, \"rol\" = ? WHERE \"id_empleado\" = ?";
+		
+		try(PreparedStatement pstmt = connection.prepareStatement(sql)){
+			
+			pstmt.setString(1, e.getNombre());
+			
+			pstmt.setString(2, e.getApellido());
+			
+			pstmt.setString(3, e.getCorreo());
+			
+			pstmt.setLong(4, e.getRol());
+			
+			pstmt.setLong(5, e.getIdEmpleado());
+			
+			pstmt.executeUpdate();
+			
+			return "Actualización exitosa";
+			
+		}catch(SQLException ex) {
+			
+			ex.printStackTrace();
+			
+			return null;
+			
+		}
+		
+		
 	}
 	
 	public String Delete (Long id) {
