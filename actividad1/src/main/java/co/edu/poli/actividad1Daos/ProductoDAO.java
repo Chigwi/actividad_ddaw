@@ -27,6 +27,10 @@ public class ProductoDAO {
 		try (PreparedStatement pstmt = connection.prepareStatement(sql)){
 			pstmt.setString(1, p.getDescripcion());
 			pstmt.setBoolean(2, p.getDisponible());
+			pstmt.setDouble(3, p.getPrecio());
+			pstmt.setString(4, p.getCategoria());
+			
+			
 		}
 	}
 	
