@@ -106,7 +106,17 @@ public class DetalleProductoDAO {
 	
 	
 	public String Delete (Long id) {
-		return null;
+		String sql = "DELETE FROM \"detalle_producto\" WHERE \"id_detalle_producto\" = ?" ;
+		try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setLong(1, id);;
+            pstmt.executeUpdate();
+            return "eliminacion exitosa";
+            
+		}catch(SQLException e){
+			e.printStackTrace();
+			return null;
+			
+		}
 	}
 	public DetalleProducto mapRStoDetalleProducto(ResultSet rs) {
 		try {
