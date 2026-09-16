@@ -36,11 +36,11 @@
                     2016-01-05
                     emifor
                     -->
-                    <dependency>
-                        <groupId>org.postgresql</groupId>
-                        <artifactId>postgresql</artifactId>
-                        <version>${postgresql.version}</version>
-                    </dependency>
+					<dependency>
+					    <groupId>org.postgresql</groupId>
+					    <artifactId>postgresql</artifactId>
+					    <version>42.7.4</version>
+					</dependency>
                 </dependencies>
             </plugin>
         </plugins>
@@ -71,7 +71,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>${postgresql.version}</version>
+            <version>42.7.4</version>
             <scope>runtime</scope>
         </dependency>
     </dependencies>
