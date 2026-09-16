@@ -88,8 +88,22 @@ public class DetalleProductoDAO {
 	}
 	
 	public String Update (DetalleProducto e) {
-		return null;
+		String sql = "UPDATE \"detalle_producto\" SET \"notas\" = ?, \"detalle_pedido\" = ?,\"producto_id\" = ? WHERE \"id_detalle_pedido\" = ?";
+		try (PreparedStatement pstmt = connection.prepareStatement(sql)){
+			pstmt.setString(1, e.getNotas());
+			pstmt.setLong(2, e.getDetallePedido());
+			pstmt.setLong(3, e.getProductoId());
+			pstmt.setLong(4, e.getIdDetalleProducto());
+			
+			pstmt.executeUpdate();
+			
+			return "Actualizacion exitosa!";
+		}catch(SQLException e1){
+			e1.printStackTrace();
+			return null;
+		}
 	}
+	
 	
 	public String Delete (Long id) {
 		return null;
