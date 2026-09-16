@@ -22,11 +22,47 @@ public class DetalleProductoDAO {
 	}
 	
 	public String insert (DetalleProducto t) {
-		return  null;
+		String sql = "INSERT INTO\"detalle_producto\"(\"id_detalle_producto\",\"notas\",\"detalle_pedido\",\"producto_id\")VALUES(?,?,?)";
+		
+		try (PreparedStatement pstmt = connection.prepareStatement(sql)){
+			
+			pstmt.setLong (1, t.getIdDetalleProducto());
+			pstmt.setString (2, t.getNotas());
+			pstmt.setLong (3, t.getDetallePedido());
+			pstmt.setLong (4, t.getProductoId());
+			pstmt.executeUpdate();
+			
+			return "Insercion exitosa!";
+			
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	public DetalleProducto select (Long id) {
-		return null;
+		
+		String sql = "SELECT * FROM \"detalle_producto\" WHERE \"id_detalle_pedido\" = ?";
+		try(PreparedStatement pstmt = connection.prepareStatement(sql)){
+			
+			pstmt.setLong(1, id);
+			 ResultSet rs = pstmt.executeQuery();
+			 
+			 if(rs.next()) {
+				 DetalleProducto dp = mapRStoDetalleProducto(rs);
+				 return dp;
+			 }else {
+				 System.out.println("detalle de producto no encontrado");
+				 return null;
+			 }
+			
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+			return null;
+		}
+		
 	}
 	
 	public List<DetalleProducto> selctAll(){

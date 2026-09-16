@@ -2,25 +2,25 @@ package co.edu.poli.actividad1.model;
 
 public class DetalleProducto {
 	
-	private Long detalleProducto;
+	private Long idDetalleProducto;
 	private String notas;
 	private Long detallePedido;
 	private Long productoId;
 	
 	public DetalleProducto(Long detalleProducto, String notas, Long detallePedido, Long productoId) {
 		super();
-		this.detalleProducto = detalleProducto;
+		this.idDetalleProducto = detalleProducto;
 		this.notas = notas;
 		this.detallePedido = detallePedido;
 		this.productoId = productoId;
 	}
 
-	public Long getDetalleProducto() {
-		return detalleProducto;
+	public Long getIdDetalleProducto() {
+		return idDetalleProducto;
 	}
 
-	public void setDetalleProducto(Long detalleProducto) {
-		this.detalleProducto = detalleProducto;
+	public void setIdDetalleProducto(Long detalleProducto) {
+		this.idDetalleProducto = detalleProducto;
 	}
 
 	public String getNotas() {
@@ -49,7 +49,7 @@ public class DetalleProducto {
 
 	@Override
 	public String toString() {
-		return "DetalleProducto [detalleProducto=" + detalleProducto + ", notas=" + notas + ", detallePedido="
+		return "DetalleProducto [detalleProducto=" + idDetalleProducto + ", notas=" + notas + ", detallePedido="
 				+ detallePedido + ", productoId=" + productoId + "]";
 	}
 	
