@@ -30,8 +30,14 @@ public class ProductoDAO {
 			pstmt.setDouble(3, p.getPrecio());
 			pstmt.setString(4, p.getCategoria());
 			
+			pstmt.executeUpdate();
 			
+			return "Insercion exitosa!";
+		}catch(SQLException e) {
+			e.printStackTrace();
 		}
+		
+		return null;
 	}
 	
 	public Producto select(String id) {
