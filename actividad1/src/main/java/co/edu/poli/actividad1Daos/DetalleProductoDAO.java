@@ -42,6 +42,13 @@ public class DetalleProductoDAO {
 		return null;
 	}
 	public DetalleProducto mapRStoDetalleProducto(ResultSet rs) {
-		return null;
+		try {
+			DetalleProducto p = new DetalleProducto (rs.getLong("id_detalle_producto"),rs.getString("notas"),rs.getLong("detalle_pedido"),rs.getLong("producto_id"));
+			return p;
+		}catch(SQLException e){
+			e.printStackTrace();
+			return null;
+			
+		}
 	}
 }
