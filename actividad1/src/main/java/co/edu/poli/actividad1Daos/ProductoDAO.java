@@ -116,6 +116,7 @@ public class ProductoDAO {
 	}
 	
 	private Producto mapRStuProducto(ResultSet rs) throws SQLException{
-		
+		Producto p = new Producto(rs.getLong("id_producto"), rs.getString("descripcion"), rs.getBoolean("disponible"), rs.getDouble("precio"), rs.getString("categoria"));
+		return p;
 	}
 }
