@@ -2,6 +2,7 @@ package co.edu.poli.actividad1Daos;
 
 import co.edu.poli.actividad1.model.DetalleProducto;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DetalleProductoDAO {
@@ -66,8 +67,24 @@ public class DetalleProductoDAO {
 	}
 	
 	public List<DetalleProducto> selctAll(){
-		return null;
 		
+		List<DetalleProducto> detallesProductos = new ArrayList <>();
+		 String sql = "SELECT * FROM \"detalle_producto\"";
+		 try (Statement stmt = connection.createStatement()){
+             ResultSet rs = stmt.executeQuery(sql); {
+             while (rs.next()) {
+                detallesProductos.add(mapRStoDetalleProducto(rs));
+             }
+             return detallesProductos;
+        }
+       
+      
+	}catch(SQLException e){
+		e.printStackTrace();
+		return null;
+		}
+		
+		 
 	}
 	
 	public String Update (DetalleProducto e) {
