@@ -1,6 +1,7 @@
 package co.edu.poli.actividad1Daos;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 import co.edu.poli.actividad1.model.Producto;
@@ -67,11 +68,36 @@ public class ProductoDAO {
 	}
 	
 	public List<Producto> selectAll(){
-		
+		List<Producto> productos = new ArrayList<Producto>();
+		String sql = "SELECT * FROM \"producto\"";
+		try(Statement stmt = connection.createStatement()) {
+			ResultSet rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				productos.add(mapRStuProducto(rs));
+			}
+			return productos;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return productos;
+		}
 	}
 	
 	public String update(Producto p) {
-		
+		String sql = "UPDATE \"producto\" SET \"descripcion\" = ?, \"disponible\" = ?, \"precio\" = ?, \"categoria\" = ? WHERE \"id_producto\" = ?";
+		try(PreparedStatement pstmt = connection.prepareStatement(sql)){
+			pstmt.setString(1, p.getDescripcion());
+			pstmt.setBoolean(2, p.getDisponible());
+			pstmt.setDouble(3, p.getPrecio());
+			pstmt.setString(4, p.getCategoria());
+			pstmt.setLong(5, p.getIdProducto());
+			
+			pstmt.executeUpdate();
+			
+			return "Actualizacion exitosa!";
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	public String delete(String id) {
