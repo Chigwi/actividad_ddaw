@@ -141,6 +141,25 @@ public class EmpleadoDAO {
 	
 	public String Delete (Long id) {
 		
+		String sql = "DELETE FROM \"empleado\" WHERE \"id_empleado\" = ?";
+		
+		try(PreparedStatement pstmt = connection.prepareStatement(sql)){
+			
+			pstmt.setLong(1, id);
+			
+			pstmt.executeUpdate();
+			
+			return "eliminacion exitosa!";
+			
+			
+		}catch(SQLException e) {
+			
+			e.printStackTrace();
+			
+			return null;
+			
+		}
+		
 	}
 	
 	public Empleado mapRStoEmpleado(ResultSet rs) {
