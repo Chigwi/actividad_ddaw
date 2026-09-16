@@ -1,6 +1,9 @@
 package co.edu.poli.actividad1Daos;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
 import co.edu.poli.actividad1.model.Empleado;
 
 public class EmpleadoDAO {
@@ -82,6 +85,26 @@ public class EmpleadoDAO {
 	}
 	
 	public List <Empleado> selectAll(){
+		
+		List <Empleado> empleados = new ArrayList<Empleado>();
+		
+		String sql = "SELECT * FROM \"empleado\"";
+		
+		try(Statement stmt = connection.createStatement()){
+			
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				empleados.add(mapRStoEmpleado(rs));
+			}
+			return empleados;
+			
+		}catch(SQLException e) {
+			
+			e.printStackTrace();
+			
+			return null;
+		}
 		
 	}
 	
