@@ -18,6 +18,6 @@ CREATE TABLE producto(
     id_producto int PRIMARY KEY,
     descripcion varchar(1000),
     disponible boolean,
-    precio double,
+    precio float,
     categoria varchar(100)
 );
