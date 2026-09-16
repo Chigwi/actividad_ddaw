@@ -7,6 +7,7 @@ public class Producto {
 	private Boolean disponible;
 	private Double precio;
 	private String categoria;
+	
 	public Long getIdProducto() {
 		return idProducto;
 	}
