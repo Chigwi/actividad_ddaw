@@ -1,5 +1,6 @@
 package co.edu.poli.actividad1;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import co.edu.poli.actividad1.model.DetalleProducto;
@@ -78,10 +79,27 @@ public class Main {
         ProductoDAO productoDAO = new ProductoDAO();
         productoDAO.setConnection(DatabaseConnection.getInstance().getconConnection());
         
-        Producto p1 = new Producto((long)1, "Panzerotti", null, null, null);
+        Producto p1 = new Producto((long)1, "Panzerotti", "Empanada de harina rellena de salsa marinara, queso y pollo. Adornado con sal marina", true, 29900.0, "Panaderia y reposteria");
+        Producto p2 = new Producto((long)2, "Pasta a l'assesina", "Pasta cosinada en salsa napolitana con pimienta roja y parmesano regiano", true, 35900.0, "Pastas y relacionados");
+        Producto p3 = new Producto((long)3, "Ribeye", "Medallon de costilla de res a la parrilla", true, 53900.0, "Carnes");
         
+        productoDAO.insert(p1);
+        productoDAO.insert(p2);
+        productoDAO.insert(p3);
         
+        List<Producto> productos = productoDAO.selectAll();
         
+        System.out.println(productos.toString());
+        
+        Producto p4 = new Producto((long)1, "Poliperro", "Es un poliperro, no puedes querer nada mas", true, 14900.0, "Comidas rapidas");
+
+        productoDAO.update(p4);
+       
+        System.out.println(productoDAO.select((long)1));
+
+        productoDAO.delete((long)1);
+        productoDAO.delete((long)2);
+        productoDAO.delete((long)3);
         
         
         
