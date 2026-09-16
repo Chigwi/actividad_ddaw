@@ -1,4 +1,4 @@
-package co.edu.poli.actividad1;
+package co.edu.poli.actividad1Daos;
 
 import java.awt.List;
 import java.sql.PreparedStatement;
