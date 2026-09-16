@@ -13,9 +13,8 @@ public class ProductoDAO {
 		return connection;
 	}
 
-	public ProductoDAO(Connection connection) {
+	public ProductoDAO() {
 		super();
-		this.connection = connection;
 	}
 
 	public void setConnection(Connection connection) {
@@ -23,14 +22,15 @@ public class ProductoDAO {
 	}
 	
 	public String insert(Producto p) {
-		String sql = "INSERT INTO \"producto\"  (\"id_producto\", \"descripcion\", \"disponible\", \"precio\", \"categoria\") VALUES (?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO \"producto\"  (\"id_producto\", \"nombre\", \"descripcion\", \"disponible\", \"precio\", \"categoria\") VALUES (?, ?, ?, ?, ?, ?)";
 		
 		try (PreparedStatement pstmt = connection.prepareStatement(sql)){
 			pstmt.setLong(1, p.getIdProducto());
-			pstmt.setString(2, p.getDescripcion());
-			pstmt.setBoolean(3, p.getDisponible());
-			pstmt.setDouble(4, p.getPrecio());
-			pstmt.setString(5, p.getCategoria());
+			pstmt.setString(2, p.getNombre());
+			pstmt.setString(3, p.getDescripcion());
+			pstmt.setBoolean(4, p.getDisponible());
+			pstmt.setDouble(5, p.getPrecio());
+			pstmt.setString(6, p.getCategoria());
 			
 			pstmt.executeUpdate();
 			
@@ -53,7 +53,7 @@ public class ProductoDAO {
 			
 			if (rs.next()) {
 				
-				Producto p = new Producto(rs.getLong("id_producto"), rs.getString("descripcion"), rs.getBoolean("disponible"), rs.getDouble("precio"), rs.getString("categoria"));
+				Producto p = new Producto(rs.getLong("id_producto"), rs.getString("nombre"), rs.getString("descripcion"), rs.getBoolean("disponible"), rs.getDouble("precio"), rs.getString("categoria"));
 				
 				return p;
 			}else {
@@ -83,13 +83,14 @@ public class ProductoDAO {
 	}
 	
 	public String update(Producto p) {
-		String sql = "UPDATE \"producto\" SET \"descripcion\" = ?, \"disponible\" = ?, \"precio\" = ?, \"categoria\" = ? WHERE \"id_producto\" = ?";
+		String sql = "UPDATE \"producto\" SET \"nombre\" = ?, \"descripcion\" = ?, \"disponible\" = ?, \"precio\" = ?, \"categoria\" = ? WHERE \"id_producto\" = ?";
 		try(PreparedStatement pstmt = connection.prepareStatement(sql)){
-			pstmt.setString(1, p.getDescripcion());
-			pstmt.setBoolean(2, p.getDisponible());
-			pstmt.setDouble(3, p.getPrecio());
-			pstmt.setString(4, p.getCategoria());
-			pstmt.setLong(5, p.getIdProducto());
+			pstmt.setString(1, p.getNombre());
+			pstmt.setString(2, p.getDescripcion());
+			pstmt.setBoolean(3, p.getDisponible());
+			pstmt.setDouble(4, p.getPrecio());
+			pstmt.setString(5, p.getCategoria());
+			pstmt.setLong(6, p.getIdProducto());
 			
 			pstmt.executeUpdate();
 			
@@ -116,7 +117,7 @@ public class ProductoDAO {
 	}
 	
 	private Producto mapRStuProducto(ResultSet rs) throws SQLException{
-		Producto p = new Producto(rs.getLong("id_producto"), rs.getString("descripcion"), rs.getBoolean("disponible"), rs.getDouble("precio"), rs.getString("categoria"));
+		Producto p = new Producto(rs.getLong("id_producto"), rs.getString("nombre"), rs.getString("descripcion"), rs.getBoolean("disponible"), rs.getDouble("precio"), rs.getString("categoria"));
 		return p;
 	}
 }

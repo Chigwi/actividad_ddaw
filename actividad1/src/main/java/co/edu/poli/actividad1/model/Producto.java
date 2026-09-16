@@ -3,11 +3,19 @@ package co.edu.poli.actividad1.model;
 public class Producto {
 	
 	private Long idProducto;
+	private String nombre;
 	private String descripcion;
 	private Boolean disponible;
 	private Double precio;
 	private String categoria;
+
 	
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 	public Long getIdProducto() {
 		return idProducto;
 	}
@@ -38,9 +46,10 @@ public class Producto {
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
-	public Producto(Long idProducto, String descripcion, Boolean disponible, Double precio, String categoria) {
+	public Producto(Long idProducto, String nombre, String descripcion, Boolean disponible, Double precio, String categoria) {
 		super();
 		this.idProducto = idProducto;
+		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.disponible = disponible;
 		this.precio = precio;
@@ -48,7 +57,7 @@ public class Producto {
 	}
 	@Override
 	public String toString() {
-		return "Producto [idProducto=" + idProducto + ", descripcion=" + descripcion + ", disponible=" + disponible
+		return "Producto [idProducto=" + idProducto + "nombre=" + nombre + ", descripcion=" + descripcion + ", disponible=" + disponible
 				+ ", precio=" + precio + ", categoria=" + categoria + "]";
 	}
 	

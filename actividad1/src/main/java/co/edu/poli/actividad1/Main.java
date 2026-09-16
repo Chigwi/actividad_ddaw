@@ -4,8 +4,10 @@ import java.util.List;
 
 import co.edu.poli.actividad1.model.DetalleProducto;
 import co.edu.poli.actividad1.model.Empleado;
+import co.edu.poli.actividad1.model.Producto;
 import co.edu.poli.actividad1Daos.DetalleProductoDAO;
 import co.edu.poli.actividad1Daos.EmpleadoDAO;
+import co.edu.poli.actividad1Daos.ProductoDAO;
 
 /**
  *
@@ -70,6 +72,15 @@ public class Main {
         detalleProductoDAO.Delete((long)1);
         detalleProductoDAO.Delete((long)2);
         detalleProductoDAO.Delete((long)3);
+        
+        // prueba de productos.
+        
+        ProductoDAO productoDAO = new ProductoDAO();
+        productoDAO.setConnection(DatabaseConnection.getInstance().getconConnection());
+        
+        Producto p1 = new Producto((long)1, "Panzerotti", null, null, null);
+        
+        
         
         
         

@@ -15,7 +15,7 @@ public class DatabaseConnection {
 		
 		try {
 			
-			String url = "jdbc:postgresql://localhost:5432/nombre";
+			String url = "jdbc:postgresql://192.168.0.4:5432/nombre";
 					
 			String user = "user";
 			
