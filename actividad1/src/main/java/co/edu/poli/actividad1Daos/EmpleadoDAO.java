@@ -24,7 +24,7 @@ public class EmpleadoDAO {
 	
 	public String insert (Empleado e) {
 		
-		String sql = "INSERT INTO \"empleado\" (\"id_empleado\", \" nombre\", \" apellido\", \"correo\", \" rol\" ) VALUES (?,?,?,?,?)";
+		String sql = "INSERT INTO \"empleado\" (\"id_empleado\", \"nombre\", \"apellido\", \"correo\", \"rol\" ) VALUES (?,?,?,?,?)";
 		
 		try(PreparedStatement pstmt = connection.prepareStatement(sql)){
 			
