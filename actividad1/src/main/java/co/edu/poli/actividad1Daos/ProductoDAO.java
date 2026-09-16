@@ -43,12 +43,12 @@ public class ProductoDAO {
 		
 	}
 	
-	public Producto select(String id) {
+	public Producto select(Long id) {
 		String sql = "SELECT * FROM \"producto\" WHERE \"id_producto\" = ?";
 		
 		try(PreparedStatement pstmt = connection.prepareStatement(sql)) {
 			
-			pstmt.setString(1, id);
+			pstmt.setLong(1, id);
 			ResultSet rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
@@ -100,10 +100,10 @@ public class ProductoDAO {
 		}
 	}
 	
-	public String delete(String id) {
+	public String delete(Long id) {
 		String sql = "DELETE FROM \"producto\" WHERE \"id_producto\" = ?";
 		try(PreparedStatement pstmt = connection.prepareStatement(sql)) {
-			pstmt.setString(1, id);
+			pstmt.setLong(1, id);
 			
 			pstmt.executeUpdate();
 			
