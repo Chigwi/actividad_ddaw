@@ -21,6 +21,21 @@ public class EmpleadoDAO {
 	
 	public String insert (Empleado e) {
 		
+		String sql = "INSERT INTO \"empleado\" (\"id_empleado\", \" nombre\", \" apellido\", \"correo\", \" rol\" ) VALUES (?,?,?,?,?)";
+		
+		try(PreparedStatement pstmt = connection.prepareStatement(sql)){
+			
+			pstmt.setLong(1, e.getIdEmpleado());
+			
+			
+			
+			
+		}catch(SQLException e) {
+			
+			e.printStackTrace();
+			
+		}
+		
 	}
 	
 	public Empleado select (Long id) {
