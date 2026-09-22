@@ -31,15 +31,20 @@ public class Main {
     	
     	Empleado Sam = new Empleado((long)3, "Sam", "Arce", "wearesysz@outlook.com", (long) 1);
     	
+    	System.out.println("DAO Empleado:" + "\n ");
+    	
     	empleadoDAO.insert(Salo);
     	empleadoDAO.insert(Sam);
     	empleadoDAO.insert(Allie);
         
+    	System.out.println("Select all: " +"\n");
         List <Empleado> empleados = empleadoDAO.selectAll();
         
         System.out.println(empleados.toString());
         
         empleadoDAO.Update(Allie2);
+        
+        System.out.println("Select by id" + "\n");
         
         System.out.println(empleadoDAO.select((long)1).toString());
         
@@ -51,6 +56,9 @@ public class Main {
         
         DetalleProductoDAO detalleProductoDAO = new DetalleProductoDAO();
     	
+        
+        System.out.println("DAO DetalleProducto: " +" \n");
+        
     	detalleProductoDAO.setConnection(DatabaseConnection.getInstance().getconConnection());
     	
         DetalleProducto dp1 = new DetalleProducto((long)1, "sin sal", (long)1, (long)1);
@@ -62,11 +70,16 @@ public class Main {
         detalleProductoDAO.insert(dp2);
         detalleProductoDAO.insert(dp3);
         
+    	System.out.println("Select all: " +"\n");
+    	
         List <DetalleProducto> detallesProductos = detalleProductoDAO.selctAll();
         
         System.out.println(detallesProductos.toString());
         
         detalleProductoDAO.Update(dp4);
+        
+        
+        System.out.println("Select by id" + "\n");
         
         System.out.println(detalleProductoDAO.select((long)1).toString());
         
@@ -77,6 +90,9 @@ public class Main {
         // prueba de productos.
         
         ProductoDAO productoDAO = new ProductoDAO();
+        
+        System.out.println("DAO Producto:" +"\n");
+        
         productoDAO.setConnection(DatabaseConnection.getInstance().getconConnection());
         
         Producto p1 = new Producto((long)1, "Panzerotti", "Empanada de harina rellena de salsa marinara, queso y pollo. Adornado con sal marina", true, 29900.0, "Panaderia y reposteria");
@@ -87,12 +103,16 @@ public class Main {
         productoDAO.insert(p2);
         productoDAO.insert(p3);
         
+    	System.out.println("Select all: " +"\n");
+    	
         List<Producto> productos = productoDAO.selectAll();
         
         System.out.println(productos.toString());
         
         Producto p4 = new Producto((long)1, "Poliperro", "Es un poliperro, no puedes querer nada mas", true, 14900.0, "Comidas rapidas");
-
+        
+        
+        System.out.println("Select by id" + "\n");
         productoDAO.update(p4);
        
         System.out.println(productoDAO.select((long)1));
